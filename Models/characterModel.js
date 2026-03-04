@@ -4,6 +4,12 @@ const characterSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'A character must have a name'],
+    unique: true,
+  },
+  gender: {
+    type: String,
+    enum: ['Male', 'Female', 'Unknown'],
+    default: 'Unknown',
   },
   bounty: {
     type: Number,
