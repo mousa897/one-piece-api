@@ -19,15 +19,41 @@ const characterSchema = new mongoose.Schema({
     type: String,
     default: 'No Crew',
   },
+  affiliation: {
+    type: String,
+    enum: ['Pirate', 'Marine', 'Revolutionary', 'Civilian', 'World Government'],
+    default: 'Civilian',
+  },
+  title: {
+    type: String,
+    enum: [
+      'Yonko',
+      'Warlord',
+      'Admiral',
+      'Fleet Admiral',
+      'Worst Generation',
+      'Legend',
+      'None',
+    ],
+    default: 'None',
+  },
   role: {
     type: String,
     enum: [
       'Captain',
+      'First Mate',
       'Swordsman',
       'Navigator',
       'Cook',
       'Doctor',
       'Sniper',
+      'Helmsman',
+      'Shipwright',
+      'Musician',
+      'Fighter',
+      'Commander',
+      'Admiral',
+      'Scientist',
       'Civilian',
     ],
     default: 'Civilian',
@@ -44,6 +70,9 @@ const characterSchema = new mongoose.Schema({
   debutArc: {
     type: String,
     required: [true, 'A character must have a debut arc'],
+  },
+  image: {
+    type: String,
   },
 });
 
