@@ -1,8 +1,16 @@
 const Character = require('./../Models/characterModel');
+const ApiFeatures = require('./../utils/apiFeatures');
 
 exports.getAllCharacters = async (req, res) => {
   try {
-    const characters = await Character.find();
+    // EXECUTE QUERY
+    const features = new ApiFeatures(Character.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate();
+
+    const characters = await features.query;
 
     res.status(200).json({
       status: 'success',
