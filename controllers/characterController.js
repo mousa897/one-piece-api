@@ -1,6 +1,11 @@
 const Character = require('./../Models/characterModel');
 const ApiFeatures = require('./../utils/apiFeatures');
 
+exports.aliasTopBounty = (req, res, next) => {
+  req.url = '/?limit=5&sort=-bounty&fields=name,bounty,crew,title';
+  next();
+};
+
 exports.getAllCharacters = async (req, res) => {
   try {
     // EXECUTE QUERY
