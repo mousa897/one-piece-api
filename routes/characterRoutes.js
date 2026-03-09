@@ -11,6 +11,12 @@ router
   );
 
 router
+  .route('/total-bounty-per-crew')
+  .get(characterController.totalBountyPerCrew);
+
+router.route('/crew-info/:crew').get(characterController.pirateCrewInfo);
+
+router
   .route('/')
   .get(characterController.getAllCharacters)
   .post(characterController.createCharacter);
