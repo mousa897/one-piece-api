@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const slugify = require('slugify');
 
 const characterSchema = new mongoose.Schema({
   name: {
@@ -74,6 +75,11 @@ const characterSchema = new mongoose.Schema({
   image: {
     type: String,
   },
+  slug: String,
+});
+
+characterSchema.pre('save', function () {
+  this.slug = slugify(this.name, { lower: true });
 });
 
 const Character = mongoose.model('Character', characterSchema);
