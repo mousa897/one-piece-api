@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const characterRouter = require('./routes/characterRoutes');
+const userRouter = require('./routes/userRoutes');
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
 
@@ -21,6 +22,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/api/v1/characters', characterRouter);
+app.use('/api/v1/users', userRouter);
 
 // Error handling
 app.all('*splat', (req, res, next) => {
